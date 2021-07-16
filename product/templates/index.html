@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품관리</title>
+</head>
+<body>
+<h3>제품 목록</h3>
+<ul>
+  <li><a href="/product/add">상품등록</a></li>
+  <li><a href="/product/list">상품목록</a></li>
+  <!--
+  <li>제품검색</li>
+  <li>제품목록</li>
+  <li>제품등록</li>
+  -->
+</ul>
+<form action="/product/get" method="post">
+    검색할 제품 번호 : <input type="text" name="num">
+    <input type="submit" value="검색">
+</form>
+</body>
+</html>

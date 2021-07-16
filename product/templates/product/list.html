@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품 목록</title>
+    <script>
+        function del(num){
+               location.href='/product/del?num='+num
+        }
+    </script>
+</head>
+<body>
+<h3>제품 목록</h3>
+<br/>
+
+<table border="1">
+    <tr>
+        <th>상품 번호</th><th>상품 이름</th><th>상품 가격</th><th>상품 수량</th><th>삭제</th>
+    </tr>
+{% for p in prods %}
+    <tr>
+        <td>{{p.num}}</td>
+        <td><a href="/product/edit?num={{p.num}}" >{{p.name}}</a></td>
+        <td>{{p.price}}</td>
+        <td>{{p.amount}}</td>
+        <td><input type="button" value="삭제" onclick="del({{p.num}})"></td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
