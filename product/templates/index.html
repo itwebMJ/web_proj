@@ -7,16 +7,23 @@
 <body>
 <h3>제품 목록</h3>
 <ul>
-  <li><a href="/product/add">상품등록</a></li>
-  <li><a href="/product/list">상품목록</a></li>
-  <!--
-  <li>제품검색</li>
-  <li>제품목록</li>
-  <li>제품등록</li>
-  -->
+    <!-- 제품 관련 -->
+    <li><a href="/product/add">상품등록</a></li>
+    <li><a href="/product/list">상품목록</a></li>
+    <!-- 회원 관련 -->
+    <li><a href="/member/join">회원가입</a></li>
+    <li><a href="/member/login">로그인</a></li>
+    <li><a href="/member/list">회원목록</a></li>
+
 </ul>
 <form action="/product/get" method="post">
     검색할 제품 번호 : <input type="text" name="num">
+    <input type="submit" value="검색">
+</form>
+<br/><br/><br/>
+
+<form action="/member/get" method="post">
+    검색할 회원 아이디: <input type="text" name="id">
     <input type="submit" value="검색">
 </form>
 </body>

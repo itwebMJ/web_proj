@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 상세 페이지</title>
+    <script>
+        function del(id){
+               location.href='/member/del?id='+id
+        }
+    </script>
+</head>
+<body>
+<h3>회원 상세 페이지</h3>
+<form action="/member/edit" method="post">
+    <table border="1">
+        <tr>
+          <th>아이디</th>
+          <td><input type="text" name="id" value="{{mem.id}}" readonly></td>
+        </tr>
+        <tr>
+          <th>비밀번호</th>
+          <td><input type="password" name="pwd" value="{{mem.pwd}}" ></td>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <td><input type="text" name="name" value="{{mem.name}}" ></td>
+        </tr>
+        <tr>
+          <th>이메일</th>
+          <td><input type="text" name="email" value="{{mem.email}}" ></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="수정">
+                <input type="button" value="삭제" onclick="del('{{mem.id}}')">
+            </td>
+        </tr>
+</table>
+</form>
+</body>
+</html>
