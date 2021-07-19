@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 목록</title>
+</head>
+<body>
+<h3>회원 목록</h3>
+<br/>
+
+<table border="1">
+    <tr>
+        <th>아이디</th><th>비밀번호</th><th>이름</th><th>이메일</th>
+    </tr>
+{% for m in members %}
+    <tr>
+        <td><a href="/member/edit?id={{m.id}}">{{m.id}}</a></td>
+        <td>{{m.pwd}}</td>
+        <td>{{m.name}}</td>
+        <td>{{m.email}}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
