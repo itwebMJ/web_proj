@@ -33,6 +33,7 @@ class ProductDao:
         try:
             cur.execute(sql, vals)
             row = cur.fetchone()
+            prod = None
             if row != None:
                 prod = vo.Product(row[0], row[1], row[2], row[3])
             return prod
