@@ -12,7 +12,13 @@
     <li><a href="/product/list">상품목록</a></li>
     <!-- 회원 관련 -->
     <li><a href="/member/join">회원가입</a></li>
-    <li><a href="/member/login">로그인</a></li>
+    <li>
+        {% if 'id' in session %}
+        {{session.id}}님 {{msg}}<a href="/member/logout">&ndsp;&ndsp;로그아웃</a>
+        {% else %}
+        <a href="/member/login">로그인</a>
+        {% endif %}
+    </li>
     <li><a href="/member/list">회원목록</a></li>
 
 </ul>

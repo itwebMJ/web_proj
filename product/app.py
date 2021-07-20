@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, session
 
 '''
 테이블 생성
@@ -15,7 +15,7 @@ service 작성
 	외부에 기능 제공, app.py(controller)에 사용할 기능을 정의
 app.py(controller) 작성
 플라스크 객체 생성
-route()를 이용해서 사용자에게 제공할 url 등록 get post 
+routes()를 이용해서 사용자에게 제공할 url 등록 get post 
 등록한 url마다 실행할 함수를 작성 : 실행할 코드와 보여줄 뷰 페이지 생성
 뷰 페이지로 사용할 html 파일 작성
 
@@ -27,6 +27,7 @@ app = Flask(__name__, template_folder="templates") #flask 객체 생성. 웹 어
 
 prod_sercice = model.ProductService()#서비스 객체 생성
 mem_sercice = MemberModel.MemberService()
+app.secret_key = "cggasadfsgadf" #시크릿키 설정
 
 @app.route('/')         #라우트 등록. 클라이언트 요청 url 지정
 def home():
@@ -113,19 +114,36 @@ def join():
 def login_form():
     return render_template('member/login.html')
 
+@app.route('/member/logout')
+def logout():
+    if 'id' in session:
+        session.pop('id', None)
+    return redirect('/')
+
 @app.route('/member/login', methods=["POST"])
 def login():
-    id = request.form.get('id', '', str)
-    pwd = request.form.get('pwd', '', str)
-    mem = mem_sercice.getMember(id)
-    return render_template('member/login.html')
+    msg = ''
+    path = 'member/login.html'
+    id = request.form['id']
+    pwd = request.form['pwd']
+    m = mem_sercice.getMember(id)
+    if m==None:
+        msg = '없는 아이디'
+    else:
+        if pwd ==m.pwd:
+            session['id'] = id
+            path = 'index.html'
+            msg = '로그인 성공'
+        else:
+            msg = '패스워드 불일치'
+    return render_template(path, msg=msg)
 
 @app.route('/member/list')
 def mem_list():
     mem = mem_sercice.getAll()
     return render_template('member/list.html', members=mem)
 
-@app.route('/member/get', methods=["POST"])
+@app.route('/member/get', methods=["POST","GET"])
 def mem_get():
     id = request.form.get('id', '', str)
     mem = mem_sercice.getMember(id)
@@ -160,4 +178,5 @@ def mem_delete():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.debug = True
+    app.run()
