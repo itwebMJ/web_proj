@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>버스 노선 목록</title>
+</head>
+<body>
+<h3>버스 노선 목록</h3>
+<table border="1">
+    <tr><th>노선 아이디</th><th>버스 명</th></tr>
+    {% for bus in list %}
+    <tr>
+        <td><a href="/businfo/getroute-info?routeId={{bus.busRouteId}}">{{bus.busRouteId}}</a></td>
+        <td>{{bus.busRouteNm}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
