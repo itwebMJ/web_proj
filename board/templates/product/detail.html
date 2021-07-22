@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품 상세 페이지</title>
+</head>
+<body>
+<h3>제품 상세 페이지</h3>
+<table border="1">
+    <tr>
+      <th>상품 번호</th>
+      <td>{{prod.num}}</td>
+    </tr>
+    <tr>
+      <th>상품 이름</th>
+      <td>{{prod.name}}</td>
+    </tr>
+    <tr>
+      <th>상품 이미지</th>
+      <td><img src="{{prod.img_path}}" style="width=200px;height:200px"/></td>
+    </tr>
+    <tr>
+      <th>상품 가격</th>
+      <td>{{prod.price}}</td>
+    </tr>
+    <tr>
+      <th>상품 수량</th>
+      <td>{{prod.amount}}</td>
+    </tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품 등록</title>
+</head>
+<body>
+<form action="/product/add" method="post" enctype="multipart/form-data">
+  <table border="1">
+    <tr>
+      <th>제품 이름</th>
+      <td><input type="text" name="name"></td>
+    </tr>
+    <tr>
+      <th>제품 가격</th>
+      <td><input type="text" name="price"></td>
+    </tr>
+    <tr>
+      <th>상품 수량</th>
+      <td><input type="text" name="amount"></td>
+    </tr>
+    <tr>
+      <th>상품 이미지 선택</th>
+      <td><input type="file" name="img_path"></td>
+    </tr>
+    <tr>
+      <th colspan="2"><input type="submit" value="추가"></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,9 +1,8 @@
-from flask import Blueprint, render_template, request, redirect, session
+from flask import Blueprint, render_template, request
 import board.models.businfo as bus
 
 bp = Blueprint('businfo', __name__, url_prefix='/businfo')
 bus_service = bus.BusService()
-
 
 @bp.route('/')
 def root():
@@ -21,7 +20,6 @@ def getroute_info():
     bus = bus_service.getRouteInfoItem(routeId)
     stations = bus_service.getStaionsByRouteList(routeId)
     return render_template('businfo/detail.html', bus=bus, stations=stations)
-
 
 
 
